@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: stg_citibike_trips
+    description: "staged and cleaned Citi Bike trip data from the BigQuery public dataset. minimal cleaning needed"
+    columns:
+      - name: bikeid
+        description: "unique id for each bike"
+      - name: usertype
+        description: "type of rider: Subscriber (annual member) or Customer (casual rider)"
+      - name: tripduration
+        description: "duration of trip (in seconds)"
+
+  - name: stg_citibike_stations
+    description: "cleaned CitiBike station data including location and availability. minimal cleaning needed"
+    columns:
+      - name: station_id
+        description: "unique identifier for each station"
+      - name: name
+        description: "name of the station"
+      - name: capacity
+        description: "total number of docks at the station"
+
+  - name: most_popular_stations
+    description: "aggregated trip counts and average duration by station they start at"
+    columns:
+      - name: station_name
+        description: "name of the starting station"
+      - name: total_trips_started
+        description: "total number of trips that started at this station"
+      - name: avg_trip_duration_minutes
+        description: "average trip duration (in minutes) for trips starting at this station"
+
+  - name: daily_trip_counts
+    description: "daily trip counts and average duration broken down by user type"
+    columns:
+      - name: trip_date
+        description: "date of the trip"
+      - name: usertype
+        description: "type of rider: Subscriber or Customer"
+      - name: total_trips
+        description: "total number of trips on that day for that user type"
+      - name: avg_duration_minutes
+        description: "average trip duration in minutes"
