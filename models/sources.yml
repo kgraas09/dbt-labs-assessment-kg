@@ -1,10 +1,9 @@
+version: 3
+
 sources:
-    - name: jaffle_shop
-      description: This is a replica of the Postgres database used by our app
-      database: dbt-tutorial
-      schema: jaffle_shop
-      tables:
-          - name: customers
-            description: One record per customer.
-          - name: orders
-            description: One record per order. Includes cancelled and deleted orders.
+  - name: citibike
+    database: bigquery-public-data
+    schema: new_york_citibike
+    tables:
+      - name: citibike_trips
+      - name: citibike_stations
